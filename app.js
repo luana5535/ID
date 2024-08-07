@@ -21,10 +21,13 @@ function exibirMenu() {
 
         case '1':
             let nome = prompt('Qual o nome do usuário? ')
+            let telefones = []
+            let telefone
+            while ((telefone = prompt('Telefone (ou deixe em branco para sair): '))) {
+                telefones.push(telefone);
+                }
             let email = prompt('Qual o email do usuário? ')
-            let numero = prompt('Qual o número do usuário? ')
-            adicionar({nome, email, numero})    
-            console.log('Usuário cadastrado com sucesso! ')
+            adicionar({nome, telefones, email})    
 
             exibirMenu()
             break
@@ -41,8 +44,14 @@ function exibirMenu() {
             }else {
                 let novoNome = prompt('Qual o novo nome? ')
                 let novoEmail = prompt('Qual o novo email? ')
-                let novoNum = prompt('Qual o novo número? ')
-                atualizar(id,{nome:novoNome, email:novoEmail, numero:novoNum})
+                let novosNums = []
+                let novoNum
+                while ((novoNum = prompt('Novo número (ou deixe em branco para sair): '))) {
+                    novosNums.push(novoNum);
+                
+                
+                }
+                atualizar(id,{nome:novoNome, email:novoEmail, telefones:novosNums})
                 console.log('Usuário atualizado com sucesso! ')
             }
         }
