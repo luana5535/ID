@@ -23,7 +23,7 @@ function exibirMenu() {
             let nome = prompt('Qual o nome do usuário? ')
             let email = prompt('Qual o email do usuário? ')
             let numero = prompt('Qual o número do usuário? ')
-            usuarios.push({nome, email, numero})
+            adicionar({nome, email, numero})    
             console.log('Usuário cadastrado com sucesso! ')
 
             exibirMenu()
@@ -35,14 +35,14 @@ function exibirMenu() {
             }else {
                 listar()
                 let opcao = prompt('Digite o id: ')
-                const id = contatos.findIndex(contato => contato.id === opcao)
+                const id = usuarios.findIndex(usuario => usuario.id == opcao)
             if(id == -1) {
                 console.log('id não encontrado. ')   
             }else {
                 let novoNome = prompt('Qual o novo nome? ')
                 let novoEmail = prompt('Qual o novo email? ')
                 let novoNum = prompt('Qual o novo número? ')
-                usuarios.push({nome:novoNome, email:novoEmail, numero:novoNum})
+                atualizar(id,{nome:novoNome, email:novoEmail, numero:novoNum})
                 console.log('Usuário atualizado com sucesso! ')
             }
         }
@@ -76,5 +76,6 @@ function exibirMenu() {
 
         default:
             console.log('Opção inválida, tente novamente.')
+            exibirMenu()
     }
 }
